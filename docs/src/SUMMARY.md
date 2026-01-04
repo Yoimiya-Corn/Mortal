@@ -13,6 +13,7 @@
 # User Guide
 * [Docker Quick Start](user/docker.md)
 * [Build](user/build.md)
+* [Model Weights](user/model_weights.md)
 * [Training]()
     * [Pre-Trained Model]()
     * [Configurations]()

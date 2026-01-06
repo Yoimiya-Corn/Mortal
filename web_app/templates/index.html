@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortal AI 跑谱网站 - Local Game Review</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🀄 Mortal AI 本地跑谱网站</h1>
+            <p class="subtitle">Local Game Review with Your Own AI Model</p>
+        </header>
+
+        <div class="status-bar" id="statusBar">
+            <span id="modelStatus" class="status-badge status-warning">模型未加载</span>
+            <span id="modelInfo"></span>
+        </div>
+
+        <section class="section">
+            <h2>1. 加载模型 / Load Model</h2>
+            <div class="form-group">
+                <label for="modelPath">模型文件路径 (例如: D:\vscode\Mortal\model\Corn.pth):</label>
+                <input type="text" id="modelPath" placeholder="输入模型文件的完整路径" 
+                       value="D:\vscode\Mortal\model\Corn.pth">
+                <button onclick="loadModel()" class="btn btn-primary">加载模型</button>
+            </div>
+            <div id="loadResult" class="result-box"></div>
+        </section>
+
+        <section class="section">
+            <h2>2. 上传牌谱 / Upload Game Record</h2>
+            <div class="form-group">
+                <label for="playerSelect">选择分析玩家:</label>
+                <select id="playerSelect">
+                    <option value="0">玩家 0 (东家起)</option>
+                    <option value="1">玩家 1</option>
+                    <option value="2">玩家 2</option>
+                    <option value="3">玩家 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mjaiLog">粘贴 mjai 格式牌谱:</label>
+                <textarea id="mjaiLog" rows="10" placeholder='{"type":"start_game"}
+{"type":"start_kyoku"...}
+...'></textarea>
+                <button onclick="analyzeGame()" class="btn btn-success">开始分析</button>
+            </div>
+            <div id="analyzeResult" class="result-box"></div>
+        </section>
+
+        <section class="section" id="resultsSection" style="display: none;">
+            <h2>3. 分析结果 / Analysis Results</h2>
+            <div class="results-summary" id="resultsSummary"></div>
+            <div class="events-container" id="eventsContainer"></div>
+        </section>
+
+        <footer>
+            <p>基于 <a href="https://github.com/Equim-chan/Mortal" target="_blank">Mortal</a> 项目</p>
+            <p>使用您自己训练的模型进行本地分析</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
